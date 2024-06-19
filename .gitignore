@@ -1,0 +1,52 @@
+# 忽略 Visual Studio 临时文件、构建结果等
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# .NET 和 Visual Studio 的文件和文件夹
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 工具相关
+_ReSharper*/
+*.ReSharper
+_Analysis/
+
+# 封装文件
+*.nupkg
+*.snupkg
+*.vsix
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+*.sql
+*.sqlite
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
