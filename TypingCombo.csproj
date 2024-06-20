@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="Assets\Configs\" />
+		<Folder Include="Resources\Dictionaries\" />
+		<Folder Include="Resources\Images\FrontSet\TimesNewRoman\" />
+		<Folder Include="Resources\Styles\" />
+		<Folder Include="src\ViewModels\" />
+		<Folder Include="src\Models\" />
+		<Folder Include="src\Controllers\" />
+		<Folder Include="src\Services\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Assets\**\*">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+		<Content Include="Resources\Images\**\*">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		
+	</ItemGroup>
+
+</Project>

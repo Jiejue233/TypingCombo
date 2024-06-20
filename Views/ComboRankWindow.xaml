@@ -1,0 +1,16 @@
+﻿<Window x:Class="TypingCombo.Views.ComboRankWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TypingCombo.Views"
+        mc:Ignorable="d"
+        Title="ComboRankWindow" Height="100" Width="100"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="#33FFFFFF"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <Image x:Name="ComboRank" Stretch="None"></Image>
+    </Grid>
+</Window>

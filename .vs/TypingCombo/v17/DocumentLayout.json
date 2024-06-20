@@ -1,0 +1,137 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\views\\comborankwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:views\\comborankwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\views\\comborankwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:views\\comborankwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\typingcombo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:typingcombo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\assets\\configs\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:assets\\configs\\config.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|c:\\users\\liuyi\\source\\repos\\jiejue233\\typingcombo\\src\\helpers\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88A1B0F1-3B81-4312-B57E-FEC0A91060F9}|TypingCombo.csproj|solutionrelative:src\\helpers\\jsonhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TypingCombo",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\TypingCombo.csproj",
+              "RelativeDocumentMoniker": "TypingCombo.csproj",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\TypingCombo.csproj",
+              "RelativeToolTip": "TypingCombo.csproj",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAWwBoAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-20T05:18:45.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\MainWindow.xaml",
+              "RelativeToolTip": "Views\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-20T01:03:10.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Views\\MainWindow.xaml.cs",
+              "ViewState": "AQIAANwAAAAAAAAAAADwv8oAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T01:02:40.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ComboRankWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\ComboRankWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\ComboRankWindow.xaml",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\ComboRankWindow.xaml",
+              "RelativeToolTip": "Views\\ComboRankWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-20T03:18:05.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ComboRankWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\ComboRankWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\ComboRankWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Views\\ComboRankWindow.xaml.cs",
+              "RelativeToolTip": "Views\\ComboRankWindow.xaml.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAmwCIAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T03:19:18.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "JsonHelper.cs",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\src\\Helpers\\JsonHelper.cs",
+              "RelativeDocumentMoniker": "src\\Helpers\\JsonHelper.cs",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\src\\Helpers\\JsonHelper.cs",
+              "RelativeToolTip": "src\\Helpers\\JsonHelper.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAsAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-20T02:54:05.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "config.json",
+              "DocumentMoniker": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Assets\\Configs\\config.json",
+              "RelativeDocumentMoniker": "Assets\\Configs\\config.json",
+              "ToolTip": "C:\\Users\\liuyi\\source\\repos\\Jiejue233\\TypingCombo\\Assets\\Configs\\config.json",
+              "RelativeToolTip": "Assets\\Configs\\config.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-20T01:07:30.237Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
