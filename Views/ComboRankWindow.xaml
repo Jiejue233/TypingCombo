@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TypingCombo.Views"
         mc:Ignorable="d"
-        Title="ComboRankWindow" Height="100" Width="100"
+        Title="ComboRankWindow" Height="500" Width="500"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="#33FFFFFF"
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        Topmost="True">
     <Grid>
         <Image x:Name="ComboRank" Stretch="None"></Image>
     </Grid>

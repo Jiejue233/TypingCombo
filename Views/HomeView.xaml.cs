@@ -1,7 +1,12 @@
-﻿using System.Text;
-using System.Text.Json;
+﻿using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,24 +16,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using TypingCombo.src.Helpers;
-using TypingCombo.Views;
+using TypingCombo.src.Models;
+using TypingCombo.src.ViewModels;
 
-
-namespace TypingCombo
+namespace TypingCombo.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// HomeView.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HomeView : System.Windows.Controls.UserControl
     {
 
-        string configFilePath = "Assets/Configs/config.json";
-        string jsonContent;
-        Config config;
+        ConfigViewModel cvm;
+        PresetViewModel pvm;
+
+        HomeViewModel vm;
+
+        NotifyIcon nIcon;
+
         ComboRankWindow? comboRankWindow;
+        RankState state = RankState.NONE;
+        RankState prev = RankState.NONE;
 
         private const int WH_KEYBOARD_LL = 13;
         private const int WH_MOUSE_LL = 14;
@@ -39,9 +48,10 @@ namespace TypingCombo
         private const int WM_MOUSEMOVE = 0x0200;
         private const int WM_MOUSEWHEEL = 0x020A;
 
+        private KeyBuffer prevKeys;
         private Dictionary<int, bool> VK_KEYBOARD_ESCAPE = new Dictionary<int, bool>();
 
-        public int ActionCount { get; set; }
+        public double ActionCount { get; set; }
         private DateTime _startTime;
 
         // 键盘钩子的回调函数的委托声明
@@ -84,30 +94,61 @@ namespace TypingCombo
             public IntPtr dwExtraInfo;
         }
 
-
-        public MainWindow()
+        public HomeView()
         {
             InitializeComponent();
-            _startTime = DateTime.Now;
-            ReloadConfig();
+            Loaded += HomeView_Loaded;
 
-            ReloadEscapeList();
-
-
-            SetupHook();
 
         }
 
-        public void ReloadConfig()
+        private void HomeView_Loaded(object sender, RoutedEventArgs e)
         {
-            jsonContent = File.ReadAllText(configFilePath);
-            config = JsonSerializer.Deserialize<Config>(json: jsonContent);
+            vm = DataContext as HomeViewModel;
+            Debug.WriteLine(Properties.Settings.Default.SelectedPreset);
+            prevKeys = new KeyBuffer();
+            Config();
         }
+
+
+        private void Usercontrol_Switching(object? sender, RoutedEventArgs e)
+        {
+            UnhookWindowsHookEx(_keyboardHookID);
+            UnhookWindowsHookEx(_mouseHookID);
+            if (comboRankWindow != null)
+            {
+                comboRankWindow.Close();
+                comboRankWindow = null;
+            }
+        }
+
+        private void Config()
+        {
+            _startTime = DateTime.Now;
+            if (vm.ComboWindowOpen)
+            {
+                string imageFolder = @$"Resources/Images/FrontSet/{vm.SelectedFrontSet}/";
+                comboRankWindow = new ComboRankWindow(imageFolder);
+                comboRankWindow.Show();
+                comboRankWindow.UpdateRank(state);
+                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                mainWindow.comboRankWindow = comboRankWindow;
+            }
+            ReloadEscapeList();
+            SetupHook();
+        }
+
+        private void ConfigTrayIcon()
+        {
+            nIcon = new NotifyIcon();
+
+        }
+
 
 
         public void ReloadEscapeList()
         {
-            foreach (int keyValue in Enum.GetValues(typeof(Keys)))
+            foreach (int keyValue in Enum.GetValues(typeof(Key)))
             {
                 if (!VK_KEYBOARD_ESCAPE.ContainsKey(keyValue))
                 {
@@ -116,7 +157,7 @@ namespace TypingCombo
             }
 
 
-            foreach (int escapeKey in config.KeycodeEscaper)
+            foreach (int escapeKey in vm.KeycodeEscaper)
             {
                 VK_KEYBOARD_ESCAPE[escapeKey] = true;
             }
@@ -161,13 +202,21 @@ namespace TypingCombo
             {
                 var keyboardHookStruct = (KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(KBDLLHOOKSTRUCT));
                 int vkCode = keyboardHookStruct.vkCode;
+                vkCode = (int)KeyInterop.KeyFromVirtualKey(vkCode);
+                Debug.WriteLine(vkCode);
+                foreach (int key in vm.KeycodeEscaper)
+                {
+                    Debug.Write($"{key}, ");
+                }
+                Debug.WriteLine("");
 
                 // some keyboard escape value
                 if (VK_KEYBOARD_ESCAPE[vkCode])
                 {
                     return CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
                 }
-                ActionCount++;
+
+                ActionCount = ActionCount + (1 - prevKeys.Add(vkCode));
             }
             UpdateAPM();
             return CallNextHookEx(_keyboardHookID, nCode, wParam, lParam);
@@ -188,24 +237,17 @@ namespace TypingCombo
             return CallNextHookEx(_mouseHookID, nCode, wParam, lParam);
         }
 
-        private void Windows_Closed(object sender, EventArgs e)
-        {
-            UnhookWindowsHookEx(_keyboardHookID);
-            UnhookWindowsHookEx(_mouseHookID);
-            if (comboRankWindow != null)
-            {
-                comboRankWindow.Close();
-                comboRankWindow = null;
-            }
-        }
-
 
         private void ToggleRankWindow_Checked(object sender, RoutedEventArgs e)
         {
             if (comboRankWindow == null)
             {
-                comboRankWindow = new ComboRankWindow();
+                string imageFolder = @$"Resources/Images/FrontSet/{vm.configViewModel.SelectedFrontSet}/";
+                comboRankWindow = new ComboRankWindow(imageFolder);
                 comboRankWindow.Show();
+                comboRankWindow.UpdateRank(state);
+                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                mainWindow.comboRankWindow = comboRankWindow;
             }
         }
 
@@ -215,6 +257,8 @@ namespace TypingCombo
             {
                 comboRankWindow.Close();
                 comboRankWindow = null;
+                MainWindow mainWindow = Window.GetWindow(this) as MainWindow;
+                mainWindow.comboRankWindow = null;
             }
         }
 
@@ -225,47 +269,48 @@ namespace TypingCombo
             double minutes = elapsedTime.TotalMinutes;
             if (minutes > 0)
             {
-                double apm = ActionCount / (minutes+1);
-                Dispatcher.Invoke(() => { ApmTextBlock.Text = $"APM: {apm:F2}"; });
+                double apm = ActionCount / (minutes + 1);
+                Dispatcher.Invoke(() => { ApmTextBlock.Text = $"APM: {apm:F1}"; });
                 if (comboRankWindow != null)
                 {
-                    string imageFolder = @$"Resources/Images/FrontSet/{config.SelectedFrontSet}/";
-                    if (apm >= config.RankRange.SS)
+                    if (apm >= vm.SS)
                     {
-                        BitmapImage image = new BitmapImage(new Uri(imageFolder + "SSS.png", UriKind.RelativeOrAbsolute));
-                        comboRankWindow.UpdateImage(image);
+                        state = RankState.SSS;
                     }
-                    else if (apm >= config.RankRange.S)
+                    else if (apm >= vm.S)
                     {
-                        BitmapImage image = new BitmapImage(new Uri(imageFolder + "SS.png", UriKind.RelativeOrAbsolute));
-                        comboRankWindow.UpdateImage(image);
+                        state = RankState.SS;
                     }
-                    else if (apm >= config.RankRange.A)
+                    else if (apm >= vm.A)
                     {
-                        BitmapImage image = new BitmapImage(new Uri(imageFolder + "S.png", UriKind.RelativeOrAbsolute));
-                        comboRankWindow.UpdateImage(image);
+                        state = RankState.S;
                     }
-                    else if (apm >= config.RankRange.B)
+                    else if (apm >= vm.B)
                     {
-                        BitmapImage image = new BitmapImage(new Uri(imageFolder + "A.png", UriKind.RelativeOrAbsolute));
-                        comboRankWindow.UpdateImage(image);
+                        state = RankState.A;
                     }
-                    else if (apm >= config.RankRange.C)
+                    else if (apm >= vm.C)
                     {
-                        BitmapImage image = new BitmapImage(new Uri(imageFolder + "B.png", UriKind.RelativeOrAbsolute));
-                        comboRankWindow.UpdateImage(image);
+                        state = RankState.B;
                     }
-                    else if (apm >= config.RankRange.NONE)
+                    else if (apm >= vm.NONE)
                     {
-                        BitmapImage image = new BitmapImage(new Uri(imageFolder + "C.png", UriKind.RelativeOrAbsolute));
-                        comboRankWindow.UpdateImage(image);
+                        state = RankState.C;
                     }
                     else
                     {
-                        comboRankWindow.UpdateImage(null);
+                        state = RankState.NONE;
                     }
+
+                    if (state != prev)
+                    {
+                        comboRankWindow.UpdateRank(state);
+                        prev = state;
+                    }
+
                 }
             }
         }
+
     }
 }

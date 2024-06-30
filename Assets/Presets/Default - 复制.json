@@ -1,12 +1,10 @@
 {
   "KeycodeEscaper": [
-    27,
-    91,
-    92,
-    20,
-    8
+    13,
+    70,
+    8,
+    2
   ],
-  "SelectedFrontSet": "TimesNewRoman",
   "RankRange": {
     "NONE": 5.0,
     "C": 40.0,

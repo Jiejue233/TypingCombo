@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="TypingCombo.Views.SettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TypingCombo.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1200"
+             KeyDown="Window_KeyDown"
+             Focusable="True"
+             GotFocus="Window_GotFocus">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Dictionaries/SliderStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+                    <DockPanel VerticalAlignment="Top">
+            <StackPanel>
+                <Button Content="←" Command="{Binding NavigateHomeCommand}" HorizontalAlignment="Left" Width="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="25"/>
+            </StackPanel>
+            
+            <Grid Margin="20,0,0,0" Width="200">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="23*"/>
+                    <RowDefinition Height="72*"/>
+                </Grid.RowDefinitions>
+                <StackPanel VerticalAlignment="Top" >
+                    <ComboBox x:Name="presetSelector" ItemsSource="{Binding PresetList}"
+                        SelectedItem="{Binding SelectedPreset, Mode=TwoWay}" SelectionChanged="presetSelector_SelectionChanged"/>
+
+                    <ComboBox x:Name="frontSetSelector" ItemsSource="{Binding FrontSetList}"
+                        SelectedItem="{Binding SelectedFrontSet, Mode=TwoWay}"/>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <DockPanel>
+                        <Canvas Name="sliderCanvas" Height="300" VerticalAlignment="Top">
+                            <DockPanel Canvas.Left="100" Canvas.Top="10" Width="120">
+                            <TextBlock>SS to SSS: </TextBlock>
+                            <TextBox Name="textSS" Width="40" IsReadOnly="True" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Canvas.Left="100" Canvas.Top="35" Width="120">
+                            <TextBlock>S to SS:</TextBlock>
+                            <TextBox Name="textS" Width="40" IsReadOnly="True" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Canvas.Left="100" Canvas.Top="60" Width="120">
+                            <TextBlock>A to S:</TextBlock>
+                            <TextBox Name="textA" Width="40"  IsReadOnly="True" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Canvas.Left="100" Canvas.Top="85" Width="120" >
+                            <TextBlock>B to A:</TextBlock>
+                            <TextBox Name="textB" Width="40" IsReadOnly="True" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Canvas.Left="100" Canvas.Top="110" Width="120">
+                            <TextBlock>C to B:</TextBlock>
+                                <TextBox Name="textC" Width="40"  IsReadOnly="True" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                            <DockPanel  Canvas.Left="100" Canvas.Top="135" Width="120">
+                                <TextBlock>NONE to C:</TextBlock>
+                                <TextBox Name="textNONE" Width="40" IsReadOnly="True" HorizontalAlignment="Right"/>
+                            </DockPanel>
+                           
+                            <Slider x:Name="sliderSS" Orientation="Vertical" Minimum="0" Maximum="100" TickFrequency="10" TickPlacement="Both" SmallChange="1" Height="300" Canvas.Left="50" Value="80" ValueChanged="Slider_ValueChanged"/>
+                            <Slider x:Name="sliderS" Orientation="Vertical" Minimum="0" Maximum="100" TickFrequency="10" TickPlacement="Both" SmallChange="1" Height="300" Canvas.Left="50" Value="60" ValueChanged="Slider_ValueChanged"/>
+                            <Slider x:Name="sliderA" Orientation="Vertical" Minimum="0" Maximum="100" TickFrequency="10" TickPlacement="Both" SmallChange="1" Height="300" Canvas.Left="50" Value="40" ValueChanged="Slider_ValueChanged"/>
+                            <Slider x:Name="sliderB" Orientation="Vertical" Minimum="0" Maximum="100" TickFrequency="10" TickPlacement="Both" SmallChange="1" Height="300" Canvas.Left="50" Value="20" ValueChanged="Slider_ValueChanged"/>
+                            <Slider x:Name="sliderC" Orientation="Vertical" Minimum="0" Maximum="100" TickFrequency="10" TickPlacement="Both" SmallChange="1" Height="300" Canvas.Left="50" Value="0" ValueChanged="Slider_ValueChanged"/>
+
+                    </Canvas>
+                    <Grid HorizontalAlignment="Right">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+
+                        <!-- 功能键行 -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnEscape" Content="Esc" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="13"/>
+                            <Button x:Name="btnF1" Content="F1" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="90"/>
+                            <Button x:Name="btnF2" Content="F2" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="91"/>
+                            <Button x:Name="btnF3" Content="F3" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="92"/>
+                            <Button x:Name="btnF4" Content="F4" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="93"/>
+                            <Button x:Name="btnF5" Content="F5" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="94"/>
+                            <Button x:Name="btnF6" Content="F6" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="95"/>
+                            <Button x:Name="btnF7" Content="F7" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="96"/>
+                            <Button x:Name="btnF8" Content="F8" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="97"/>
+                            <Button x:Name="btnF9" Content="F9" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="98"/>
+                            <Button x:Name="btnF10" Content="F10" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="99"/>
+                            <Button x:Name="btnF11" Content="F11" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="100"/>
+                            <Button x:Name="btnF12" Content="F12" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="101"/>
+                            <!-- 添加更多功能键... -->
+                        </StackPanel>
+
+                        <!-- 数字键行 -->
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnOemtilde" Content="`" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="146"/>
+                            <Button x:Name="btnD1" Content="1" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="35"/>
+                            <Button x:Name="btnD2" Content="2" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="36"/>
+                            <Button x:Name="btnD3" Content="3" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="37"/>
+                            <Button x:Name="btnD4" Content="4" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="38"/>
+                            <Button x:Name="btnD5" Content="5" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="39"/>
+                            <Button x:Name="btnD6" Content="6" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="40"/>
+                            <Button x:Name="btnD7" Content="7" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="41"/>
+                            <Button x:Name="btnD8" Content="8" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="42"/>
+                            <Button x:Name="btnD9" Content="9" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="43"/>
+                            <Button x:Name="btnD0" Content="0" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="34"/>
+                            <Button x:Name="btnOemMinus" Content="-" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="143"/>
+                            <Button x:Name="btnOemPlus" Content="+" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="141"/>
+                            <Button x:Name="btnBack" Content="backspace" Width="75" Height="40" Margin="2" Click="Button_Click" Tag="2"/>
+                            <!-- 添加更多数字键... -->
+                        </StackPanel>
+
+                        <!-- QWERTY 行 -->
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnTab" Content="Tab" Width="60" Height="40" Margin="2" Click="Button_Click" Tag="3"/>
+                            <Button x:Name="btnQ" Content="Q" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="60"/>
+                            <Button x:Name="btnW" Content="W" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="66"/>
+                            <Button x:Name="btnE" Content="E" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="48"/>
+                            <Button x:Name="btnR" Content="R" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="61"/>
+                            <Button x:Name="btnT" Content="T" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="63"/>
+                            <Button x:Name="btnY" Content="Y" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="68"/>
+                            <Button x:Name="btnU" Content="U" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="64"/>
+                            <Button x:Name="btnI" Content="I" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="52"/>
+                            <Button x:Name="btnO" Content="O" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="58"/>
+                            <Button x:Name="btnP" Content="P" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="59"/>
+                            <Button x:Name="btnOemOpenBrackets" Content="{}{" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="149"/>
+                            <Button x:Name="btnOemCloseBrackets" Content="}" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="151"/>
+                            <Button x:Name="btnOemPipe" Content="\" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="150"/>
+                            <!-- 添加更多字母键... -->
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnCapsLock" Content="Caps Lock" Width="75" Height="40" Margin="2" Click="Button_Click" Tag="8"/>
+                            <Button x:Name="btnA" Content="A" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="44"/>
+                            <Button x:Name="btnS" Content="S" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="62"/>
+                            <Button x:Name="btnD" Content="D" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="47"/>
+                            <Button x:Name="btnF" Content="F" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="49"/>
+                            <Button x:Name="btnG" Content="G" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="50"/>
+                            <Button x:Name="btnH" Content="H" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="51"/>
+                            <Button x:Name="btnJ" Content="J" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="53"/>
+                            <Button x:Name="btnK" Content="K" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="54"/>
+                            <Button x:Name="btnL" Content="L" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="55"/>
+                            <Button x:Name="btnOemSemicolon" Content=";" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="140"/>
+                            <Button x:Name="btnOemQuotes" Content="'" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="152"/>
+                            <Button x:Name="btnEnter" Content="Enter" Width="75" Height="40" Margin="2" Click="Button_Click" Tag="6"/>
+                            <!-- 添加更多字母键... -->
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnLShiftKey" Content="LShift" Width="90" Height="40" Margin="2" Click="Button_Click" Tag="116"/>
+                            <Button x:Name="btnZ" Content="Z" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="69"/>
+                            <Button x:Name="btnX" Content="X" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="67"/>
+                            <Button x:Name="btnC" Content="C" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="46"/>
+                            <Button x:Name="btnV" Content="V" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="65"/>
+                            <Button x:Name="btnB" Content="B" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="45"/>
+                            <Button x:Name="btnN" Content="N" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="57"/>
+                            <Button x:Name="btnM" Content="M" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="56"/>
+                            <Button x:Name="btnOemComma" Content="," Width="40" Height="40" Margin="2" Click="Button_Click" Tag="142"/>
+                            <Button x:Name="btnOemPeriod" Content="." Width="40" Height="40" Margin="2" Click="Button_Click" Tag="144"/>
+                            <Button x:Name="btnOemQuestion" Content="/" Width="40" Height="40" Margin="2" Click="Button_Click" Tag="145"/>
+                            <Button x:Name="btnRShiftKey" Content="RShift" Width="90" Height="40" Margin="2" Click="Button_Click" Tag="117"/>
+
+                            <!-- 添加更多字母键... -->
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnLControlKey" Content="LCtrl" Width="50" Height="40" Margin="2" Click="Button_Click" Tag="118"/>
+                            <Button x:Name="btnLWin" Content="Win" Width="50" Height="40" Margin="2" Click="Button_Click" Tag="70"/>
+                            <Button x:Name="btnLAltKey" Content="LAlt" Width="50" Height="40" Margin="2" Click="Button_Click" Tag="120"/>
+                            <Button x:Name="btnSpace" Content="Space" Width="400" Height="40" Margin="2" Click="Button_Click" Tag="18"/>
+                            <Button x:Name="btnRAltKey" Content="RAlt" Width="50" Height="40" Margin="2" Click="Button_Click" Tag="121"/>
+                            <Button x:Name="btnRControlKey" Content="RCtrl" Width="50" Height="40" Margin="2" Click="Button_Click" Tag="119"/>
+
+
+                            <!-- 添加更多字母键... -->
+                        </StackPanel>
+                        <!-- 其他行... -->
+                        <Button Grid.Row="6" x:Name="keyboardSaveButton" Content="Save" Width="100" Height="30" Margin="10" Click="KeyboardSave_Click"/>
+                    </Grid>
+                </DockPanel>
+                
+            </Grid>
+
+        </DockPanel>
+            <Grid Margin="0,15,0,0">
+                <Button x:Name="settingSaveButton" HorizontalAlignment="Center" Content="Save" Width="180" Height="40" Click="SettingSaveButton_Click"/>
+            </Grid>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

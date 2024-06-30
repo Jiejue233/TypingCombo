@@ -10,12 +10,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Assets\Configs\" />
-		<Folder Include="Resources\Dictionaries\" />
-		<Folder Include="Resources\Images\FrontSet\TimesNewRoman\" />
+		<Folder Include="Resources\Images\Ico\" />
 		<Folder Include="Resources\Styles\" />
-		<Folder Include="src\ViewModels\" />
-		<Folder Include="src\Models\" />
 		<Folder Include="src\Controllers\" />
 		<Folder Include="src\Services\" />
 	</ItemGroup>
@@ -24,10 +20,27 @@
 	  <None Update="Assets\**\*">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
-		<Content Include="Resources\Images\**\*">
+		<Content Include="Resources\Images\FrontSet\**\*">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
-		
+		<Resource Include="Resources\Dictionaries\**\*">
+			
+		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Settings.Designer.cs">
+	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Settings.settings</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
 	</ItemGroup>
 
 </Project>
