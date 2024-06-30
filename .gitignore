@@ -8,6 +8,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+.vs/
 
 # .NET 和 Visual Studio 的文件和文件夹
 *.user
@@ -24,6 +25,9 @@ _Analysis/
 *.nupkg
 *.snupkg
 *.vsix
+*.vsidx
+*.bin
+*.v2
 
 # OS generated files
 .DS_Store
